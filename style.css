@@ -109,20 +109,11 @@ main {
 }
 
 .adapt-left {
-  padding-right: 80px;
-}
-
-.adapt-left p {
-  /* display: -webkit-box;
--webkit-box-orient: vertical;
--webkit-line-clamp: 7;
-line-clamp: 7; */
-
-  overflow: hidden;
+  padding-right: 40px;
 }
 
 #B {
-  width: 90%;
+  width: 100%;
   align-self: center;
   justify-self: center;
 }
@@ -138,9 +129,9 @@ line-clamp: 7; */
   display: grid;
   justify-content: center;
   align-items: center;
+  align-content: center;
   width: 100%;
   height: 100%;
-
 }
 
 .improvise-right {
@@ -148,10 +139,11 @@ line-clamp: 7; */
 }
 
 #nakamoto {
-  width: 80%;
+  width: 100%;
   align-self: center;
   justify-self: center;
 }
+
 
 /* Section "overcome" */
 
@@ -172,7 +164,7 @@ line-clamp: 7; */
 
 #financial_data {
   padding-top: 20px;
-  width: 80%;
+  width: 100%;
   align-self: center;
   justify-self: center;
 }
@@ -180,31 +172,68 @@ line-clamp: 7; */
 
 /* Popup */
 
-/* Formulaire */
 .popup {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: stretch;
   width: 600px;
-  height: 200px;
+  height: 300px;
   background: var(--color4);
   position: absolute;
   right: 2%;
   bottom: 2%;
-  padding: 20px 10px;
+  padding: 20px 20px;
   color: var(--color2);
+  border-radius: 71% 29% 87% 13% / 22% 78% 22% 78%;
+  background: rgb(29,52,71);
+  background: linear-gradient(108deg, rgb(39, 73, 101) 0%, rgb(44, 113, 174) 54%, rgb(42, 139, 224) 100%);
+  box-shadow: -3px 3px 9px 3px #0b0b0c;
 }
 
 .popup-container {
-  height: 100%;
+  height: 70%;
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
   justify-items: center;
+  /* padding: 20px; */
 }
 
-.popup form {
+/* Formulaire popup */
+
+.popup-container h4 {
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.popup form {  
   width: 100%;
   display: grid;
   grid-template-columns: 60% 40%;
-  
-  
+  padding: 0px 20px; 
+  gap:5px;
+ }
+
+input {
+  cursor: pointer;
+  border: 1px solid var(--color4);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  background: white;
+  font-size: 1.2rem;
+  height: 55px;
+  box-shadow: 2px 3px 2px 0px #0a0a0a;
+    /* user-select: none; */
 }
+
+#email {
+  width: 100%;
+}
+
+#submit {
+width: 100%;
+}
+
 
