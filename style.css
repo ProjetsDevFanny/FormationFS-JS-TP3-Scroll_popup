@@ -25,12 +25,21 @@
   font-family: "Montserrat Alternates", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth; /* Effet scroll doux: */
+}
+
 ul {
   padding: 0;
 }
 
 li {
   list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color6);
 }
 
 p {
@@ -72,12 +81,16 @@ header {
   box-shadow: -1px 2px 3px #2e74b2bf;
 }
 
+nav h3 {
+  font-size: 1.4rem;
+}
+
 nav ul {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 33%);
   justify-items: end;
-  color: var(--color6);
+  font-size: 1.2rem;
   /* grid-column-gap: 72px; */
 }
 
@@ -121,7 +134,7 @@ main {
 /* secteion "Improvise" */
 
 .improvise {
-  padding-top: 30px;
+  padding-top: 50px;
 }
 
 .improvise-left,
@@ -152,7 +165,7 @@ main {
   grid-template-columns: 1fr;
   background: var(--color3);
   border-radius: 5px;
-  margin-top: 60px;
+  margin-top: 70px;
   padding: 40px;
 }
 
@@ -192,6 +205,7 @@ main {
 }
 
 .popup-container {
+  position: relative;
   height: 70%;
   display: grid;
   grid-template-columns: 1fr;
@@ -199,6 +213,19 @@ main {
   justify-items: center;
   /* padding: 20px; */
 }
+
+/* icone croix */
+
+.fa-circle-xmark {
+  position: absolute;
+  left: 1rem;
+  top: 0.6rem;
+  font-size: 1.7rem;
+  color: white;
+  text-shadow: 2px 2px 0px #333;
+  cursor: pointer;
+  transition: 0.3s;
+  }
 
 /* Formulaire popup */
 
