@@ -1,27 +1,27 @@
-// Contrôle de la hauteur de la navbar au scroll :
+// Navbar au scroll :
+let playOnce = true;
 
 window.addEventListener("scroll", () => {
   if (window.scrollY > 100) {
     navbar.style.height = "4vh";
   } else {
-    navbar.style.top = 0;
     navbar.style.height = "10vh";
   }
-});
 
-// Apparition de l'image "Nakomoto", elle glisse sur la droite :
+  // Apparition de l'image "Nakomoto"
 
-const nakamoto = document.getElementById("nakamoto");
-
-window.addEventListener("scroll", () => {
+  // Cette méthode garantit que la translation ne dépasse pas 50% de la largeur de l'écran, tout en prenant en compte la largeur de l'élément. Moins de déplacement sur mobile:
   let translation =
     window.innerWidth < 768
       ? "30vw"
       : `${Math.min(50, window.innerWidth / 2)}px`;
-  // Cette méthode garantit que la translation ne dépasse pas 50% de la largeur de l'écran, tout en prenant en compte la largeur de l'élément.
-  // Moins de déplacement sur mobile
 
-  if (window.scrollY > 300) {
+  // Ecrire un ratio de la hauteur total de la page:
+  // Cette ligne de code calcule la position actuelle du défilement (scroll) par rapport à la hauteur totale de la page web: (entre 0 et 1)
+  let scrollValue =
+    (window.scrollY + window.innerHeight) / document.body.offsetHeight;
+
+  if (scrollValue > 0.45) {
     nakamoto.style.opacity = "1";
     nakamoto.style.transform = `translateX(${translation})`;
     nakamoto.style.transition = "transform 1s ease-out, opacity 1s ease-out";
@@ -29,42 +29,25 @@ window.addEventListener("scroll", () => {
     nakamoto.style.opacity = "0";
     nakamoto.style.transform = "translateX(-20vw)";
   }
-});
 
-// Apparition de la popup, elle glisse sur la gauche quand on est tout en bas de l'écran :
+  // Apparition de la popup:
 
-const popup = document.querySelector(".popup");
-const closeBtn = document.getElementById("closeBtn");
+  const popup = document.querySelector(".popup");
 
-let popupVisible = false; // Détermine si la popup est visible
-
-// Fonction pour afficher la popup lorsque l'on atteint le bas de la page
-window.addEventListener("scroll", () => {
-  let translation =
-    window.innerWidth < 768
-      ? "30vw" // Pour les petits écrans, la popup glisse de 30% de la largeur de la fenêtre
-      : `${Math.min(50, window.innerWidth / 2)}px`; // Pour les grands écrans, la popup glisse de 50% maximum
-
-  // Si on atteint le bas de la page (scrollY + hauteur de la fenêtre >= hauteur du document)
-  if (window.scrollY > 1000) {
-    // window.scrollY + window.innerHeight >=
-    // document.documentElement.scrollHeight
-    if (!popupVisible) {
-      popup.style.opacity = "1"; // La popup devient visible
-      popup.style.transform = `translateX(${translation})`; // Elle glisse depuis la droite
-      popup.style.left = "65%"; // Positionne la popup correctement
-      popupVisible = true; // Marque la popup comme visible
-    }
+  if (scrollValue > 0.8 && playOnce) {
+    popup.style.opacity = "1"; // La popup devient visible
+    popup.style.transform = `translateX(${translation})`; // Elle glisse depuis la droite
+    popup.style.left = "65%"; // Positionne la popup correctement
+    playOnce = false;
   }
 });
 
 // Fermeture de la popup quand on clique sur l'icône "X"
 closeBtn.addEventListener("click", () => {
+  const popup = document.querySelector(".popup");
   popup.style.opacity = "0"; // Rendre la popup invisible
   popup.style.transform = "translateX(150%)"; // La fait glisser hors de l'écran à droite
 });
-
-popupVisible = false; // Popup plus JAMAIS visible après la fermeture
 
 // explications chatGPT: Apparition de l'image NAKOMOTO:
 //
